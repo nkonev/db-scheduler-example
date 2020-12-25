@@ -1,0 +1,7 @@
+spring.datasource:
+  name: scheduler_ds
+  # https://jdbc.postgresql.org/documentation/head/connect.html#connection-parameters
+  url: jdbc:postgresql://localhost:5432/scheduler?connectTimeout=10&socketTimeout=40
+  username: scheduler
+  password: "schedulerPazZw0rd"
+  driverClassName: org.postgresql.Driver
