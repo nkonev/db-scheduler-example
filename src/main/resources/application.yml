@@ -5,3 +5,6 @@ spring.datasource:
   username: scheduler
   password: "schedulerPazZw0rd"
   driverClassName: org.postgresql.Driver
+
+db-scheduler:
+  threads: 1
