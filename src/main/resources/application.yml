@@ -6,5 +6,10 @@ spring.datasource:
   password: "schedulerPazZw0rd"
   driverClassName: org.postgresql.Driver
 
-db-scheduler:
+db-scheduler-data-mover:
   threads: 1
+  table-name: scheduled_tasks_data_mover
+
+db-scheduler-failing:
+  threads: 1
+  table-name: scheduled_tasks_failing

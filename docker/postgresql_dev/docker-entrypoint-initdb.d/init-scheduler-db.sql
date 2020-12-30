@@ -18,7 +18,22 @@ create database scheduler with owner scheduler;
 
 
 -- poor man's migration
-create table scheduled_tasks (
+create table scheduled_tasks_data_mover (
+  task_name text not null,
+  task_instance text not null,
+  task_data bytea,
+  execution_time timestamp with time zone not null,
+  picked BOOLEAN not null,
+  picked_by text,
+  last_success timestamp with time zone,
+  last_failure timestamp with time zone,
+  consecutive_failures INT,
+  last_heartbeat timestamp with time zone,
+  version BIGINT not null,
+  PRIMARY KEY (task_name, task_instance)
+);
+
+create table scheduled_tasks_failing (
   task_name text not null,
   task_instance text not null,
   task_data bytea,
