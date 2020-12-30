@@ -70,7 +70,7 @@ class DbSchedulerConfiguration(private val existingDataSource: DataSource) {
         val transactionalDataSource = configureDataSource(existingDataSource)
 
         // Instantiate a new builder
-        val builder = Scheduler.create(transactionalDataSource)
+        val builder = Scheduler.create(transactionalDataSource, configuredTasks)
         builder.threads(config.threads)
 
         // Polling
@@ -96,8 +96,6 @@ class DbSchedulerConfiguration(private val existingDataSource: DataSource) {
         // Use custom executor service if provided
 //        customizer.executorService().ifPresent { executorService: ExecutorService? -> builder.executorService(executorService) }
         builder.deleteUnresolvedAfter(config.deleteUnresolvedAfter)
-
-        builder.startTasks(configuredTasks as MutableList<Task<*>>)
 
         return builder.build()
     }
